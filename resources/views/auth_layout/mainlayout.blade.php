@@ -12,6 +12,12 @@
   @include('auth_layout.link')
 
   @yield('customcss')
+  <style>
+  svg{
+    width:50px;
+    height:50px;
+  }
+  </style>
 </head>
 
 <body>

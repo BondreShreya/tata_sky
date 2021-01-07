@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Desktop Navigation */
 .nav-menu, .nav-menu * {
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
   list-style: none;
 }
 
@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu .drop-down li {
-  min-width: 180px;
+  min-width: 270px;
   position: relative;
 }
 
