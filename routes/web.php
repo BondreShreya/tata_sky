@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Models\Admin\Product;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::post('/login', [AdminLoginController::class, 'login'])->name('login.submit');
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
+    Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::resource('/product', ProductController::class);
+    Route::delete('/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
