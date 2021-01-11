@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Models\Admin\Product;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\User\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ Route::post('/add', [CartController::class, 'add'])->name('cart.store');
 Route::post('/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::get('/login', function(){
+    return view('login');
+});
+Route::get('/orders', [OrderController::class, 'index'])->name('user.order.index');
+Route::post('/placeOrder', [OrderController::class, 'placedOrder'])->name('checkout.place.order');
 
 Auth::routes();
 

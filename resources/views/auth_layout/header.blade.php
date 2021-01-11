@@ -1,7 +1,7 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex">
     <div class="logo mr-auto">
-      <h1 class="text-light"><a href="index.php">TMCPL</a></h1>
+      <h1 class="text-light"><a href="{{ url('/') }}">TMCPL</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
     </div>
@@ -30,8 +30,8 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="blog.html">Blog</a></li> -->
-        <!-- <li><a href="contact.html">Contact</a></li> -->
 
+        @if (Route::has('login'))
         <li class="get-started drop-down">
           <a href="#">
             <i class="fa fa-shopping-cart"></i> <sup>{{ \Cart::getTotalQuantity()}}</sup>
@@ -41,6 +41,12 @@
             @include('auth_layout.cart-drop')
           </ul>
         </li>
+					@auth
+          <li><a href="{{ url('/home') }}">Home</a></li>
+          @else
+          <li><a href="{{ url('/login') }}">Login / Register</a></li>
+          @endauth
+        @endif
       </ul>
     </nav><!-- .nav-menu -->
 
