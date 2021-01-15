@@ -71,23 +71,13 @@
                         </ul>
                     </div> -->
                 </li>
-                <!-- <li class="nav-item">
-                    <a data-toggle="collapse" href="#forms">
+                <li class="nav-item">
+                    <a href="">
                         <i class="fas fa-pen-square"></i>
-                        <p>Forms</p>
+                        <p>Placed Order</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="forms">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="forms/forms.html">
-                                    <span class="sub-item">Basic Form</span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </li> -->
+                </li>
                 <!-- <li class="nav-item">
                     <a data-toggle="collapse" href="#tables">
                         <i class="fas fa-table"></i>

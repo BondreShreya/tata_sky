@@ -24,6 +24,7 @@ Route::get('/', function () {
     $products = Product::where('status', 1)->paginate(3);
     return view('index', compact('products'));
 });
+// Cart Route
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
 Route::post('/add', [CartController::class, 'add'])->name('cart.store');
 Route::post('/update', [CartController::class, 'update'])->name('cart.update');
@@ -32,8 +33,14 @@ Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::get('/login', function(){
     return view('login');
 });
+
+// Order Route
 Route::get('/orders', [OrderController::class, 'index'])->name('user.order.index');
 Route::post('/placeOrder', [OrderController::class, 'placedOrder'])->name('checkout.place.order');
+Route::get('/orderDetails/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
+
+// Payment Route
+Route::post('/payment/{id}', [OrderController::class, 'payment'])->name('pay');
 
 Auth::routes();
 
