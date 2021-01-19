@@ -20,7 +20,10 @@
             </div>
             <h2 class="entry-title text-center">
               <a href="#">{{ $p->product_name }}</a>
+              
             </h2>
+            <p class="text-center"><del><i class="fa fa-inr" aria-hidden="true">&nbsp;</i>{{ $p->cost_price }}</del> -  <i class="fa fa-inr" aria-hidden="true">&nbsp;</i>{{ $p->selling_price }}</p>
+            
             <div class="entry-content">
               <div class="read-more">
               <form action="{{ route('cart.store') }}" method="POST">
@@ -30,18 +33,13 @@
                 <input type="hidden" value="{{ $p->selling_price }}" id="price" name="price">
                 <input type="hidden" value="{{ $p->product_img }}" id="img" name="img">
                 <input type="hidden" value="1" id="quantity" name="quantity">
-                <button class="btn-success">Bye Now</button>
+                <button class="btn-success">Buy Now</button>
               </form>
               </div>
             </div>
           </article>
         </div>
         @endforeach
-      </div>
-      <div class="row">
-        <div class="col-md-12 text-center">
-        {{ $products->links() }}
-        </div>
       </div>
     </div>
   </section>

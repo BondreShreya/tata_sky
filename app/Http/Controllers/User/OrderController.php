@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Admin\Product;
 use App\Models\User;
+use App\Models\Payment;
 
 class OrderController extends Controller
 {
@@ -179,5 +180,34 @@ class OrderController extends Controller
 
         return $hash;
 
+    }
+
+    public function paymentSuccess(Request $request)
+    {
+        $payment = new Payment();
+        $payment->order_id = $request->order_id;
+        $payment->name = $request->name;
+        $payment->email = $request->email;
+        $payment->transaction_id = $request->transaction_id;
+        $payment->payment_mode = $request->payment_mode;
+        $payment->payment_channel = $request->payment_channel;
+        $payment->payment_datetime = $request->payment_datetime;
+        $payment->response_message = $request->response_message;
+        $payment->save();
+    //    var_dump($request->all());
+        return view('user.success');
+    }
+
+    public function placedOrderDetails()
+    {
+        $order = DB::table('orders')->where('user_id', Auth::user()->id)->get();
+        return view('user.order.placedOrder', compact('order'));
+    }
+
+    public function invoice($id)
+    {
+        $order = DB::table('orders')->where('id', $id)->first();
+        return view('user.invoice', compact('order'));
+        // dd($order);
     }
 }

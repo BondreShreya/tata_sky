@@ -21,7 +21,7 @@ use App\Http\Controllers\User\OrderController;
 */
 
 Route::get('/', function () {
-    $products = Product::where('status', 1)->paginate(3);
+    $products = Product::where('status', 1)->get();
     return view('index', compact('products'));
 });
 // Cart Route
@@ -41,6 +41,10 @@ Route::get('/orderDetails/{id}', [OrderController::class, 'orderDetails'])->name
 
 // Payment Route
 Route::post('/payment/{id}', [OrderController::class, 'payment'])->name('pay');
+Route::post('/success', [OrderController::class, 'paymentSuccess'])->name('success');
+Route::get('/placedOrder', [OrderController::class, 'placedOrderDetails'])->name('user.placedOrder');
+Route::get('/invoice/{id}', [OrderController::class, 'invoice'])->name('invoice');
+
 
 Auth::routes();
 

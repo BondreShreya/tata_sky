@@ -72,7 +72,7 @@
                     </div> -->
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a href="{{ route('user.placedOrder') }}">
                         <i class="fas fa-pen-square"></i>
                         <p>Placed Order</p>
                         <span class="caret"></span>

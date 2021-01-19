@@ -1,7 +1,7 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex">
     <div class="logo mr-auto">
-      <h1 class="text-light"><a href="{{ url('/') }}">TMCPL</a></h1>
+      <h1 class="text-light"><a href="{{ url('/') }}"><img src="{{ asset('assets/img/TMCPL pngLOGO-01.png') }}" alt="" style="width:70px;height:73px;"></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
     </div>
