@@ -24,6 +24,10 @@ Route::get('/', function () {
     $products = Product::where('status', 1)->get();
     return view('index', compact('products'));
 });
+Route::get('/contact', function(){
+    return view('contact');
+});
+
 // Cart Route
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
 Route::post('/add', [CartController::class, 'add'])->name('cart.store');

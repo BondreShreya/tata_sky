@@ -1,9 +1,9 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex">
-    <div class="logo mr-auto">
-      <h1 class="text-light"><a href="{{ url('/') }}"><img src="{{ asset('assets/img/TMCPL pngLOGO-01.png') }}" alt="" style="width:70px;height:73px;"></a></h1>
+    <div class="mr-auto">
+      <!--<h1 class="text-light"><a href="{{ url('/') }}">TMCPL</a></h1>-->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+       <a href="{{ url('/') }}"><img src="assets/img/TMCPL pngLOGO-01.png" alt="" style="width:70px;height:73px;"></a>
     </div>
     <nav class="nav-menu d-none d-lg-block">
       <ul>
@@ -30,7 +30,8 @@
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="blog.html">Blog</a></li> -->
-
+        
+        <li><a href="{{ url('/contact') }}">Contact</a></li>
         @if (Route::has('login'))
         <li class="get-started drop-down">
           <a href="#">
@@ -41,7 +42,13 @@
             @include('auth_layout.cart-drop')
           </ul>
         </li>
-					@auth
+        <!--<li>-->
+        <!--    <div class="facebook">-->
+        <!--      <a href="https://www.facebook.com/TMCPL-102160665199880/" target="_blank"></a>-->
+        <!--    <i class="icofont-facebook"></i>-->
+        <!--    </div>-->
+        <!--</li>-->
+		@auth
           <li><a href="{{ url('/home') }}">Home</a></li>
           @else
           <li><a href="{{ url('/login') }}">Login / Register</a></li>

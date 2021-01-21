@@ -11,6 +11,8 @@ use App\Models\OrderItem;
 use App\Models\Admin\Product;
 use App\Models\User;
 use App\Models\Payment;
+use PDF;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -206,8 +208,33 @@ class OrderController extends Controller
 
     public function invoice($id)
     {
+        // $data = [
+        //     'id' => $id,
+        // ];
+        $data["email"] = "shreeyabondre78@gmail.com";
+        $data["title"] = "From ItSolutionStuff.com";
+        $data["body"] = "This is Demo";
+        $folderPath = public_path('invoice/');
         $order = DB::table('orders')->where('id', $id)->first();
-        return view('user.invoice', compact('order'));
+        $orderArray = (array)$order;
+        // dd($orderArray['id']);
+        // dd($orderArray);
+        $pdf = PDF::loadView('user.invoice', $orderArray);
+        $fileName = uniqid() . '.pdf';
+        $file = $folderPath . $fileName;
+        $path = file_put_contents($file, $pdf->output());
+        // dd($file);
+        $pdfFile = public_path('invoice/'.$fileName);
+        Mail::send('emails.myTestMail', $data, function($message)use($data, $pdfFile) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"])
+                    ->attach($pdfFile);
+            
+        });
+ 
+        dd('Mail sent successfully');
+        return $pdf->download($fileName);
+        // return view('user.invoice', $orderArray);
         // dd($order);
     }
 }
