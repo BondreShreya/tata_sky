@@ -15,4 +15,4 @@
 <link rel="stylesheet" href="{{ asset('adminAsset/css/azzara.min.css') }}">
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
-<link rel="stylesheet" href="{{ asset('adminAsset/css/demo.css') }}">
+<!-- <link rel="stylesheet" href="{{ asset('adminAsset/css/demo.css') }}"> -->

@@ -45,5 +45,5 @@
 <script src="{{ asset('adminAsset/js/ready.min.js') }}"></script>
 
 <!-- Azzara DEMO methods, don't include it in your project! -->
-<script src="{{ asset('adminAsset/js/setting-demo.js') }}"></script>
-<script src="{{ asset('adminAsset/js/demo.js') }}"></script>
+<!-- <script src="{{ asset('adminAsset/js/setting-demo.js') }}"></script>
+<script src="{{ asset('adminAsset/js/demo.js') }}"></script> -->

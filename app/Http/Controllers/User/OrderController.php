@@ -186,6 +186,19 @@ class OrderController extends Controller
 
     public function paymentSuccess(Request $request)
     {
+        
+        
+        
+        $data["email"] = $request->email;
+        $data["title"] = "Payment Invoice";
+        $data["body"] = "Your payment is successfully done. Please find attachment of payment invoice";
+        $folderPath = public_path('invoice/');
+        $order = DB::table('orders')->where('id', $id)->first();
+        $orderArray = (array)$order;
+        // dd($orderArray['id']);
+        // dd($orderArray);
+        $pdf = PDF::loadView('user.invoice', $orderArray);
+        $fileName = uniqid() . '.pdf';
         $payment = new Payment();
         $payment->order_id = $request->order_id;
         $payment->name = $request->name;
@@ -195,7 +208,18 @@ class OrderController extends Controller
         $payment->payment_channel = $request->payment_channel;
         $payment->payment_datetime = $request->payment_datetime;
         $payment->response_message = $request->response_message;
+        $payment->payment_invoice = $fileName;
         $payment->save();
+        $file = $folderPath . $fileName;
+        $path = file_put_contents($file, $pdf->output());
+        // dd($file);
+        $pdfFile = public_path('invoice/'.$fileName);
+        Mail::send('emails.myTestMail', $data, function($message)use($data, $pdfFile) {
+            $message->to($data["email"], $data["email"])
+                    ->subject($data["title"])
+                    ->attach($pdfFile);
+            
+        });
     //    var_dump($request->all());
         return view('user.success');
     }
@@ -208,33 +232,8 @@ class OrderController extends Controller
 
     public function invoice($id)
     {
-        // $data = [
-        //     'id' => $id,
-        // ];
-        $data["email"] = "shreeyabondre78@gmail.com";
-        $data["title"] = "From ItSolutionStuff.com";
-        $data["body"] = "This is Demo";
-        $folderPath = public_path('invoice/');
-        $order = DB::table('orders')->where('id', $id)->first();
-        $orderArray = (array)$order;
-        // dd($orderArray['id']);
-        // dd($orderArray);
-        $pdf = PDF::loadView('user.invoice', $orderArray);
-        $fileName = uniqid() . '.pdf';
-        $file = $folderPath . $fileName;
-        $path = file_put_contents($file, $pdf->output());
-        // dd($file);
-        $pdfFile = public_path('invoice/'.$fileName);
-        Mail::send('emails.myTestMail', $data, function($message)use($data, $pdfFile) {
-            $message->to($data["email"], $data["email"])
-                    ->subject($data["title"])
-                    ->attach($pdfFile);
-            
-        });
- 
-        dd('Mail sent successfully');
-        return $pdf->download($fileName);
-        // return view('user.invoice', $orderArray);
+        $order = Order::findorfail($id);
+        return view('user.show_invoice', compact('order'));
         // dd($order);
     }
 }

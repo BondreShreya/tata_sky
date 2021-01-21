@@ -27,27 +27,12 @@
                         <p>Product</p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a data-toggle="collapse" href="#tables">
+                <li class="nav-item">
+                    <a href="{{ route('admin.placedOrder') }}">
                         <i class="fas fa-table"></i>
-                        <p>Tables</p>
-                        <span class="caret"></span>
+                        <p>Placed Order</p>
                     </a>
-                    <div class="collapse" id="tables">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="tables/tables.html">
-                                    <span class="sub-item">Basic Table</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tables/datatables.html">
-                                    <span class="sub-item">Datatables</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> -->
+                </li>
                 <!-- <li class="nav-item">
                     <a data-toggle="collapse" href="#maps">
                         <i class="fas fa-map-marker-alt"></i>

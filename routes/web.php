@@ -61,4 +61,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::get('/users', [UsersController::class, 'index'])->name('users.index');
     Route::resource('/product', ProductController::class);
     Route::delete('/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+    Route::get('/placedOrder', [App\Http\Controllers\Admin\OrderController::class, 'placedOrderDetails'])->name('placedOrder');
+    Route::get('/orderDetails/{id}', [App\Http\Controllers\Admin\OrderController::class, 'orderDetails'])->name('orderDetails');
 });

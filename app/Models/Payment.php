@@ -12,5 +12,5 @@ class Payment extends Model
     protected $table = "payments";
 
     protected $fillable = ['order_id', 'name', 'email', 'transaction_id', 'payment_mode',
-    'payment_channel', 'payment_datetime', 'response_message'];
+    'payment_channel', 'payment_datetime', 'response_message', 'payment_invoice'];
 }
